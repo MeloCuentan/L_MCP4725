@@ -7,7 +7,7 @@ Los métodos son los siguientes:
  - void setVoltageRange(float minVoltage = 0.0, float maxVoltage = 5.0);
    Este método establece los valores mínimos y máximos de funcionamiento especificando el voltaje. Por defecto de 0V a 5V
  - void setOutputVoltage(float voltage);
-   Este método establece el valor de salida especificndo el voltaje
+   Este método establece el valor de salida especificando el voltaje
  - float getOutputVoltage();
    Devuelve el valor en voltios de la salida
  
