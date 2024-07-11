@@ -1,5 +1,5 @@
-#ifndef CONTROL_MCP4725_H
-#define CONTROL_MCP4725_H
+#ifndef L_MCP4725_H
+#define L_MCP4725_H
 
 #include <Wire.h>
 
