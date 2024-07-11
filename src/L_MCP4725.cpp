@@ -1,4 +1,4 @@
-#include "control_MCP4725.h"
+#include "L_MCP4725.h"
 
 MCP4725::MCP4725() {
   _minVoltage = 0.0;
