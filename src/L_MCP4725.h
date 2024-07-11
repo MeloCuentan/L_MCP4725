@@ -3,8 +3,6 @@
 
 #include <Wire.h>
 
-//#define MCP4725_ADDRESS 0x60 // Dirección predeterminada del MCP4725
-
 class MCP4725 {
   public:
     MCP4725();
