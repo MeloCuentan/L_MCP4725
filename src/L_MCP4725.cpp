@@ -44,18 +44,18 @@ void L_MCP4725::writeDAC(uint16_t value) {
 uint16_t L_MCP4725::getOutputValue() {
   Wire.requestFrom((uint8_t)_I2C_ADDR, (uint8_t)3);  // Pedir 2 bytes desde la dirección I2C
 
-  unsigned long startMillis = millis();
+  uint32_t startMillis = millis();
   while (Wire.available() < 3) {
     if (millis() - startMillis >= 100) {  // 100 ms timeout
-      return 0;
+      return 0;                           // o algún valor de error apropiado
     }
   }
 
-  uint8_t readCommand = Wire.read();  // Valor no utilizado
-  uint8_t msb = Wire.read();          // Leer el primer byte
-  uint8_t lsb = Wire.read();          // Leer el segundo byte
+  uint8_t readCommand = Wire.read();  // Leer el primer byte. Este no se utilziará
+  uint8_t msb = Wire.read();          // Leer el segundo byte
+  uint8_t lsb = Wire.read();          // Leer el tercer byte
 
-  uint16_t value = ((uint16_t)msb << 4) | (lsb >> 4);
+  uint16_t value = ((uint16_t)msb << 4) | (lsb >> 4); // utilizamos el msb completo y lso 4 primeros bites de lsb
 
   return value;
 }
