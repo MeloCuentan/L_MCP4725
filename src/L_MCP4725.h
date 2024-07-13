@@ -6,8 +6,7 @@
 
 class L_MCP4725 {
 public:
-    L_MCP4725();
-    void begin(uint8_t I2C_ADDR = 0x60);
+    L_MCP4725(uint8_t I2C_ADDR = 0x60);
     
     void setVoltageRange(float minVoltage = 0.0, float maxVoltage = 5.0);
     void setOutputVoltage(float voltage);
@@ -18,10 +17,10 @@ public:
     uint16_t getOutputValue();
     void writeDACEEPROM(uint16_t value);
     void writeVoltageEEPROM(float voltage);
-    
+
 private:
-    float _minVoltage;
-    float _maxVoltage;
+    float _minVoltage = 0.0;
+    float _maxVoltage = 5.0;
     uint8_t _I2C_ADDR;
     uint16_t voltageToDAC(float voltage);
     float dacToVoltage(uint16_t value);
