@@ -47,7 +47,7 @@ uint16_t L_MCP4725::getOutputValue() {
   unsigned long startMillis = millis();
   while (Wire.available() < 3) {
     if (millis() - startMillis >= 100) {  // 100 ms timeout
-      return 0;                           // o algún valor de error apropiado
+      return 0;
     }
   }
 
