@@ -15,8 +15,6 @@ public:
     void setValueRange(uint16_t minValue = 0, uint16_t maxValue = 4095);
     void setOutputValue(uint16_t value);
     uint16_t getOutputValue();
-    void writeDACEEPROM(uint16_t value);
-    void writeVoltageEEPROM(float voltage);
 
 private:
     float _minVoltage = 0.0;
