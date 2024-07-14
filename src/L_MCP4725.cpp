@@ -38,23 +38,6 @@ void L_MCP4725::writeDAC(uint16_t value) {
   Wire.endTransmission();
 }
 
-void L_MCP4725::writeDACEEPROM(uint16_t value) {
-  if (value > 4095) return;
-  Wire.beginTransmission(_I2C_ADDR);
-  Wire.write(0x60);                 // Comando para escribir en EEPROM
-  Wire.write((value >> 8) & 0x0F);  // Enviar los 4 bits más significativos
-  Wire.write(value & 0xFF);         // Enviar los 8 bits menos significativos
-  Wire.endTransmission();
-
-  delay(50);  // Esperar a que la EEPROM termine de escribir (típicamente toma 25 ms)
-}
-
-void L_MCP4725::writeVoltageEEPROM(float voltage) {
-  if (voltage > 5.0) return;
-  uint16_t value = voltageToDAC(voltage); // Convertir el voltaje a un valor DAC
-  writeDACEEPROM(value); // Guardar el valor DAC en la EEPROM
-}
-
 uint16_t L_MCP4725::getOutputValue() {
   Wire.requestFrom((uint8_t)_I2C_ADDR, (uint8_t)3);  // Pedir 2 bytes desde la dirección I2C
 
