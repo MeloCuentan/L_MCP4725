@@ -63,7 +63,7 @@ float L_MCP4725::getOutputVoltage() {
 
 void L_MCP4725::setEEPROMVoltage(float voltage) {
   uint16_t value = voltageToDAC(voltage);  // Convertimos el float a uint16_t
-  setEEPROM(uint16_t(value));
+  setEEPROMValue(uint16_t(value));
 }
 
 // *********************************    SECCIÓN PARA FUNCIONES PRIVADAS    *********************************
