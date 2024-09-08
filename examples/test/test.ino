@@ -34,12 +34,12 @@ void cambiarValor(uint16_t valor) {
     Serial.println("Valor fuera de rango");
     return;
   }
-//  Serial.print("Ajustar valor a :" + String(valor));
-//  dac.setOutputValue(valor); // Configurar valor del DAC
-//  Serial.print("    Valor leído: " + String(dac.getOutputValue()));
+  Serial.print("Ajustar valor a :" + String(valor));
+  dac.setOutputValue(valor); // Configurar valor del DAC
+  Serial.print("    Valor leído: " + String(dac.getOutputValue()));
 
-  float valorConvertido = float(valor) / 100.0;
-  Serial.print("Ajustar voltios a :" + String(valorConvertido));
-  dac.setOutputVoltage(valorConvertido);
-  Serial.println("    Voltaje leído: " + String(dac.getOutputVoltage()));
+//  float valorConvertido = float(valor) / 100.0;
+//  Serial.print("Ajustar voltios a :" + String(valorConvertido));
+//  dac.setOutputVoltage(valorConvertido);
+//  Serial.println("    Voltaje leído: " + String(dac.getOutputVoltage()));
 }
