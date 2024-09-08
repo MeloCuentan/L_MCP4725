@@ -59,6 +59,19 @@ uint16_t L_MCP4725::getOutputValue() {
   return value;
 }
 
+void L_MCP4725::setEEPROM(float voltage) {
+  uint16_t value = voltageToDAC(voltage);  // Convertimos el float a uint16_t
+  setEEPROM(uint16_t(value));
+}
+
+void L_MCP4725::setEEPROM(uint16_t value) {
+  Wire.beginTransmission(_I2C_ADDR);
+  Wire.write(0x60);                 // Comando para escribir en EEPROM y DAC
+  Wire.write((value >> 4) & 0xFF);  // Enviar los 8 bits más significativos (12-bit resolution shifted by 4 bits)
+  Wire.write((value << 4) & 0xF0);  // Enviar los 4 bits menos significativos con los 4 bits menos significativos del DAC a cero
+  Wire.endTransmission();
+}
+
 uint16_t L_MCP4725::voltageToDAC(float voltage) {
   return (uint16_t)((voltage - _minVoltage) * 4095 / (_maxVoltage - _minVoltage));
 }
